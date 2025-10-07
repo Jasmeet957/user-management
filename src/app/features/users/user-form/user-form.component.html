@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>{{ data.mode === 'add' ? 'Add New User' : 'Edit User' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="userForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" placeholder="Enter username" />
+      <mat-error *ngIf="username?.hasError('required')">
+        Username is required
+      </mat-error>
+      <mat-error *ngIf="username?.hasError('minlength')">
+        Username must be at least 3 characters
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Enter email" />
+      <mat-error *ngIf="email?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="email?.hasError('email')">
+        Please enter a valid email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Job Role</mat-label>
+      <mat-select formControlName="jobRole">
+        <mat-option *ngFor="let role of jobRoles" [value]="role.value">
+          {{ role.label }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="jobRole?.hasError('required')">
+        Job role is required
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button 
+    mat-raised-button 
+    color="primary" 
+    (click)="onSubmit()"
+    [disabled]="userForm.invalid">
+    {{ data.mode === 'add' ? 'Add' : 'Update' }}
+  </button>
+</mat-dialog-actions>

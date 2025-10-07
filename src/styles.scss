@@ -1,0 +1,38 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-snack-bar-container {
+  &.snackbar-success {
+    --mat-snack-bar-container-color: #4caf50;
+    --mat-snack-bar-button-color: #ffffff;
+  }
+  
+  &.snackbar-error {
+    --mat-snack-bar-container-color: #f44336;
+    --mat-snack-bar-button-color: #ffffff;
+  }
+  
+  &.snackbar-info {
+    --mat-snack-bar-container-color: #2196f3;
+    --mat-snack-bar-button-color: #ffffff;
+  }
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+}
